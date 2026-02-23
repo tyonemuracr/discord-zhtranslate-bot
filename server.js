@@ -56,7 +56,7 @@ client.on("messageCreate", async (message) => {
   if (command === 'tr') { //コマンドで手動翻訳
      var target = encodeURIComponent(args[0])
      var text = encodeURIComponent(message.content.replace(args[0],"").replace(prefix+"tr",""))
-     var content = await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${text}&source=&target=${target}`).then(res => res.text())
+     var content = await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${text}&source=&target=${target}`).then(res => res.text())
      message.channel.send({
       embeds: [
         {
@@ -149,8 +149,8 @@ client.on("messageCreate", async (message) => {
             var trtext = message.content
           }
           try{
-              var jares = await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${trtext}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
-              var zhres = await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${trtext}&source=&target=${encodeURIComponent("zh")}`).then(res => res.text())
+              var jares = await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${trtext}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
+              var zhres = await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${trtext}&source=&target=${encodeURIComponent("zh")}`).then(res => res.text())
     if(jares==="[リンク省略]"){
       return
     } //もしリンクのみの場合、Google Apps Scriptでリンクを[リンク省略]に置き換えてるので、リンク省略のみが返された場合はメッセージ送信しない(複数リンク非対応)
@@ -221,7 +221,7 @@ client.on("interactionCreate", async (interaction) => {
     cash.timestamp3 = Date.now()
     await client.channels.cache.get(interaction.channel.id).messages.cache.get(msg.id).delete()
     cash.timestamp4 = Date.now()
-    await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${"test"}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
+    await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${"test"}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
     cash.timestamp5 = Date.now()
     return await interaction.editReply({
       content: `EndPoint : ${cash.timestamp0-Date.parse(interaction.createdAt)}(Not so accurate.)\nsendmessage : ${cash.timestamp-cash.timestamp0}\nsendwebhook : ${cash.timestamp3-cash.timestamp}\ndeletemessage : ${cash.timestamp4-cash.timestamp3}\ntranslateapi : ${cash.timestamp5-cash.timestamp4}`,
@@ -258,8 +258,8 @@ client.on('messageUpdate',async (oldMessage,newMessage) => { //メッセージ�
     const webhook = await getWebhookInChannel(oldMessage.channel);
     const translatemsg = trmsgid[oldMessage.id]
     try{
-              var jares = await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${newMessage.content}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
-    var zhres = await fetch(`https://script.google.com/macros/s/AKfycbx2zxXArFJuPDctM7zrFEz73kVI6Y8JUcpr_GkxnyZeJT4c4mx8rSTSL-dqD4x7fEed/exec?text=${newMessage.content}&source=&target=${encodeURIComponent("zh")}`).then(res => res.text())
+              var jares = await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${newMessage.content}&source=&target=${encodeURIComponent("ja")}`).then(res => res.text())
+    var zhres = await fetch(`https://script.google.com/macros/s/AKfycbxlLgg0YN-j4JwsEemmvUZT9ki6SZDXnuw7-rb14RXHJM4yQuuQsQipB60rHOoDu_ag/exec?text=${newMessage.content}&source=&target=${encodeURIComponent("zh")}`).then(res => res.text())
     if(jares==="[リンク省略]"){
       return
     } 
